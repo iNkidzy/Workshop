@@ -27,5 +27,21 @@
 
     </DatePicker>
 
+    <Button
+        android:id="@+id/pickTimeBtn"
+        android:text="Pick Time"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/timeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Time"
+        android:textSize="25sp"
+        android:textAlignment="center" />
 
 </LinearLayout>
