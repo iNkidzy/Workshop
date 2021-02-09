@@ -5,22 +5,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="140dp"
-        android:layout_height="128dp"
-        app:srcCompat="@drawable/dice6"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="32dp" />
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="170dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/teal_200"
+        android:text="Back"
+        android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="175dp"
-        android:layout_height="28dp"
-        android:text="Welcome to second activity"
-        tools:layout_editor_absoluteX="92dp"
-        tools:layout_editor_absoluteY="204dp" />
+    <DatePicker
+        android:id="@+id/date_Picker"
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:layout_marginTop="30dp"
+        android:datePickerMode="calendar">
+
+    </DatePicker>
+
+
 </LinearLayout>

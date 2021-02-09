@@ -13,21 +13,24 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val linearLayout = findViewById(R.id.linearLayout) as LinearLayout
 
+        //Change View
         val button = findViewById<Button>(R.id.button)
         button.setOnClickListener {
             val intent = setContentView(R.layout.second)
             startActivity(intent)
 
 
-            val textView = TextView(this)
 
-            linearLayout.addView(textView)
+
+         /*  val textView = TextView(this)
+
+           linearLayout.addView(textView)
 
             val datePicker = DatePicker(this)
             textView.text = "Year: "+datePicker.year+ " Month: "+ (datePicker.month+1) +" Day: "+ datePicker.dayOfMonth
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                         textView.text = "Year: "+ year + " Month: "+ (month+1) + " Day: "+day
                     })
             linearLayout.addView(datePicker)
-
+         */
 
         }
 
@@ -48,6 +51,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun startActivity(intent: Unit) {
         setContentView(R.layout.second)
+        //DatePicker
+        val datePicker = findViewById<DatePicker>(R.id.date_Picker)
+        val today = Calendar.getInstance()
+        datePicker.init(today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH))
+
+        { view, year, month, day ->
+            val month = month + 1
+            val msg = "You selected: $day/$month/$year"
+            Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+
+        }
     }
 
     fun selctDate(view: View) {
