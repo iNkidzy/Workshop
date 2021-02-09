@@ -1,16 +1,57 @@
 package com.example.workshop1
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
+import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.webkit.WebView
+import android.widget.*
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val linearLayout = findViewById(R.id.linearLayout) as LinearLayout
+
+        val button = findViewById<Button>(R.id.button)
+        button.setOnClickListener {
+            val intent = setContentView(R.layout.second)
+            startActivity(intent)
+
+
+            val textView = TextView(this)
+
+            linearLayout.addView(textView)
+
+            val datePicker = DatePicker(this)
+            textView.text = "Year: "+datePicker.year+ " Month: "+ (datePicker.month+1) +" Day: "+ datePicker.dayOfMonth
+
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = System.currentTimeMillis()
+
+            datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                    DatePicker.OnDateChangedListener { datePicker, year, month, day->
+                        textView.text = "Year: "+ year + " Month: "+ (month+1) + " Day: "+day
+                    })
+            linearLayout.addView(datePicker)
+
+
+        }
 
     }
 
+    private fun startActivity(intent: Unit) {
+        setContentView(R.layout.second)
+    }
+
+    fun selctDate(view: View) {
+
+
+    }
 }
